@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react"
 
 export const LocationList = () => {
+    //define variable to hold state (locations)
+    //define variable to hold the function responsible for modifying state (setLocation)
     const [locations, setLocation] = useState([])
 
 
@@ -9,21 +11,17 @@ export const LocationList = () => {
     useEffect(
         () => {
             fetch("http://localhost:8088/locations")
+                //convert JSON string to JS
                 .then(res => res.json())
-                .then((data) => {
-                    setLocation(data)
+                //invoke setLocations to set value of locations variable
+                .then((locationsArray) => {
+                    setLocation(locationsArray)
                 })
         },
         []
     )
 
-    useEffect(
-        () => {
-
-        },
-        [locations]
-    )
-
+    
     return (
         <>
             {
@@ -31,8 +29,9 @@ export const LocationList = () => {
                     (locationObject) => {
                         return <p key={`location--${locationObject.id}`}>{locationObject.address}</p>
                     }
-                )
-            }
+                    )
+                }
         </>
     )
 }
+

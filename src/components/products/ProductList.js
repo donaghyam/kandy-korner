@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react"
 
 export const ProductList = () => {
+    //When you invoke useState, it returns an array
+    //Variable on left captures initial value of state
+    //Variable on right holds function whose job it is to modify state
     const [products, setProduct] = useState([])
 
 
@@ -8,21 +11,20 @@ export const ProductList = () => {
     //state variables, and then run code when that state changes.
     useEffect(
         () => {
-            fetch("http://localhost:8088/products?_expand=type&_sort=price")
-                .then(res => res.json())
-                .then((data) => {
-                    setProduct(data)
-                })
+            //Get data from API to pull into application state of tickets
+            //Expanding allows us to access the candy type via the products
+            fetch("http://localhost:8088/products?_expand=type&_sort=type")
+            //Convert JSON encoded string into Javascript    
+            .then(res => res.json())
+            //Invoke updateTickets() to set value of tickets
+            .then((data) => {
+                setProduct(data)
+            })
         },
+        //This array isn't watching any state - it runs when the component is rendered, and never again
         []
     )
 
-    useEffect(
-        () => {
-
-        },
-        [products]
-    )
 
     return (
         <>

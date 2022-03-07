@@ -1,17 +1,17 @@
-import React from "react"
-import { LocationList } from "./locations/Locations.js"
-import { ProductList } from "./products/ProductList.js"
+import React from "react";
+import { Route } from "react-router-dom"
+import { NavBar } from "./nav/NavBar";
+import { ApplicationViews } from "./ApplicationViews";
 
-export const Kandy = () => {
+//The purpose of this component is to determine the general layout of the site 
+//  - determines which order components should be displayed
+
+export const KandyKorner = () => {
     return (
+        //Fragment allows you to return one JSX element instead of a parent with mulitple child elements.
         <>
-
-            <h2>Location List</h2>
-            <LocationList />
-
-            <h2>Product List</h2>
-            <ProductList />
-          
+            <NavBar />
+            <ApplicationViews />
         </>
     )
 }
