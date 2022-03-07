@@ -1,5 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
+import { CustomerList } from "./customers/CustomerList";
 import { EmployeeForm } from "./employees/EmployeeForm";
 import { EmployeeList } from "./employees/EmployeeList";
 import { LocationList } from "./locations/Locations";
@@ -21,6 +22,10 @@ export const ApplicationViews = () => {
 
             <Route path="/locations">
                 <LocationList />
+            </Route>
+
+            <Route path="/customers">
+                <CustomerList />
             </Route>
 
             <Route exact path="/employees">
