@@ -36,10 +36,11 @@ export const EmployeeList = () => {
                         return <div>
                             <p key={`employee--${employee.id}`}>
                             {employee.name}<br></br>
-                            {/* {employee.location.address}<br></br> */}
-                            {employee.manager}<br></br>
-                            {employee.fullTime}<br></br>
-                            ${employee.hourlyRate}/hr
+                            Location: {employee.location.address}<br></br>
+                            {/* Use stringify to convert boolean */}
+                            Manager: {JSON.stringify(employee.manager)}<br></br>
+                            Full time: {JSON.stringify(employee.fullTime)}<br></br>
+                            Rate: ${employee.hourlyRate}/hr
                             </p>
                             </div>
                     }

@@ -113,7 +113,7 @@ export const EmployeeForm = () => {
                         }>
                         <option value="0">Select your location</option>
                             {locations.map((location) => {
-                                return `<option value="locationId">${location.address}`
+                                return <option value={location.id}>{location.address}</option>
                             })}
                     </select>
                 </div>
