@@ -16,7 +16,7 @@ export const NavBar = (props) => {
                 <Link className="navbar__link" to="/locations">Locations</Link>
                 <Link className="navbar__link" to="/customers">Customers</Link>
                 <Link className="navbar__link" to="/employees">Employees</Link>   
-                <Link className="navbar__link" to="/myOrders">MyOrders</Link>            
+                <Link className="navbar__link" to={`/myOrders/${localStorage.getItem("kandy_customer")}`}>MyOrders</Link>            
             </li>
         </ul>
     )

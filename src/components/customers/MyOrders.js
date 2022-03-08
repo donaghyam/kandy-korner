@@ -1,23 +1,19 @@
 import React, { useEffect, useState } from "react"
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
-import { Link, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom/cjs/react-router-dom.min"
 
 export const MyOrders = () => {
     //When you invoke useState, it returns an array
     //Variable on left captures initial value of state
     //Variable on right holds function whose job it is to modify state
     const [orders, updateOrders] = useState([])
-    //useParams returns an object of key/value pairs of URL parameters. 
-    //Use it to access match.params of the current <Route>.
-    const { customerId } = useParams()  // Variable storing the route parameter
-    const history = useHistory()
+    const { customerId } = useParams()
 
     //Create function to store fetch call for orders, so it can be called on when the page is rendered,
     //and when the delete button is clicked.
     const getOrders = () => {
         //Get data from API to pull into application state of orders
         //Expanding allows us to access the customer data via the service ticket
-        fetch(`http://localhost:8088/purchases?customerId=${customerId}`)
+        fetch(`http://localhost:8088/purchases?customerId=${customerId}&_expand=product`)
             //Convert JSON encoded string into Javascript
             .then(res => res.json())
             //Invoke updateOrders() to set value of tickets
@@ -47,10 +43,8 @@ export const MyOrders = () => {
                         //  - uses the key attribute to do its internal rendering of the DOM to know which element is which 
                         return <div>
                                     <p key={`order--${order.id}`}>
-                                        Id: {order.id}<br></br>
-                                        Type: {order.type.name}<br></br>
-                                        Product: {order.name}<br></br>
-                                        Price: ${order.price}<br></br>
+                                        Product: {order.product.name}<br></br>
+                                        Price: ${order.product.price}<br></br>
                                     </p>                      
                                 </div>
                     }

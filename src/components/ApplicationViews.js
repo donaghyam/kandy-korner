@@ -21,6 +21,16 @@ export const ApplicationViews = () => {
                 <ProductList />
             </Route>
 
+            {/* Capture whatever comes after second slash with the : and the specific key
+                that you want that number to be stored in.
+                - React will capture that number and store it in the ticketId variable
+                - (\d+) This will ensure it only envokes this route when it is this specific path
+                - the ticketId is what will be the name of the key
+             */}
+            <Route exact path="/myOrders/:customerId(\d+)">
+                <MyOrders />
+            </Route>
+
             <Route path="/locations">
                 <LocationList />
             </Route>
@@ -37,9 +47,6 @@ export const ApplicationViews = () => {
                 <EmployeeForm />
             </Route>
 
-            <Route exact path="/myOrders">
-                <MyOrders />
-            </Route>
         </>
     )
 }
